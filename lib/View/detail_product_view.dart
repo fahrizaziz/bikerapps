@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,8 +20,10 @@ class DetailProductView extends StatelessWidget {
             children: [
               // Header Section
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.0.w,
+                  vertical: 40.0.h,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -30,10 +33,10 @@ class DetailProductView extends StatelessWidget {
                         context.go('/home');
                       },
                       child: Container(
-                        height: 44,
-                        width: 44,
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
+                        height: 44.0.h,
+                        width: 44.0.h,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
                             colors: [
                               Color(0xFF34C8E8),
                               Color(0xFF4E4AF2),
@@ -42,7 +45,9 @@ class DetailProductView extends StatelessWidget {
                             end: Alignment.bottomRight,
                           ),
                           borderRadius: BorderRadius.all(
-                            Radius.circular(10.0),
+                            Radius.circular(
+                              10.0.r,
+                            ),
                           ),
                         ),
                         child: const Icon(
@@ -55,12 +60,12 @@ class DetailProductView extends StatelessWidget {
                       category['name'],
                       style: GoogleFonts.poppins(
                         color: Colors.white,
-                        fontSize: 18,
+                        fontSize: 18.0.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(
-                      width: 44.0,
+                    SizedBox(
+                      width: 44.0.w,
                     ), // Placeholder for spacing
                   ],
                 ),
@@ -69,16 +74,25 @@ class DetailProductView extends StatelessWidget {
               Image.asset(
                 category['image'], // Bike image asset
                 fit: BoxFit.cover,
+                height: 200.0.h,
               ),
               const Spacer(),
               // Description and Specification Tabs
               Container(
-                padding: const EdgeInsets.all(16),
-                decoration: const BoxDecoration(
-                  color: Color(0xFF2B3648),
+                padding: const EdgeInsets.all(
+                  16.0,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(
+                    0xFF2B3648,
+                  ),
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
+                    topLeft: Radius.circular(
+                      30.0.r,
+                    ),
+                    topRight: Radius.circular(
+                      30.0.r,
+                    ),
                   ),
                 ),
                 child: Column(
@@ -91,24 +105,30 @@ class DetailProductView extends StatelessWidget {
                         _buildTabButton('Specification', isSelected: false),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(
+                      height: 16.0.h,
+                    ),
                     Text(
                       category['name'],
                       style: GoogleFonts.poppins(
-                        fontSize: 18,
+                        fontSize: 18.0.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(
+                      height: 10.0.h,
+                    ),
                     Text(
                       category['description'],
                       style: GoogleFonts.poppins(
                         color: Colors.grey[400],
-                        fontSize: 14,
+                        fontSize: 14.sp,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 20.0.h,
+                    ),
                     // Price and Add to Cart Button
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,15 +136,17 @@ class DetailProductView extends StatelessWidget {
                         Text(
                           '\$' + category['price'],
                           style: GoogleFonts.poppins(
-                            color: const Color(0xFF34C8E8),
-                            fontSize: 24,
+                            color: const Color(
+                              0xFF34C8E8,
+                            ),
+                            fontSize: 24.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 32,
-                            vertical: 12,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 32.0.h,
+                            vertical: 12.0.h,
                           ),
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
@@ -135,13 +157,15 @@ class DetailProductView extends StatelessWidget {
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(
+                              30.0.r,
+                            ),
                           ),
                           child: Text(
                             'Add to Cart',
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
-                              fontSize: 14,
+                              fontSize: 14.0.sp,
                               color: Colors.white,
                             ),
                           ),
@@ -160,12 +184,19 @@ class DetailProductView extends StatelessWidget {
 
   Widget _buildTabButton(String text, {required bool isSelected}) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: EdgeInsets.symmetric(
+        horizontal: 8.0.w,
+      ),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+        padding: EdgeInsets.symmetric(
+          vertical: 8.0.h,
+          horizontal: 20.0.w,
+        ),
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xFF2D3C55) : const Color(0xFF222834),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(
+            20.0.r,
+          ),
         ),
         child: Text(
           text,

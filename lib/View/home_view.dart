@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,9 +18,9 @@ class HomeView extends StatelessWidget {
           Column(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 40,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.0.w,
+                  vertical: 40.0.h,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,15 +29,15 @@ class HomeView extends StatelessWidget {
                       'Choose Your Bike',
                       style: GoogleFonts.poppins(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: 24.0.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Container(
-                      height: 44,
-                      width: 44,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
+                      height: 44.0.h,
+                      width: 44.0.w,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
                           colors: [
                             Color(
                               0xFF34C8E8,
@@ -50,7 +51,7 @@ class HomeView extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.all(
                           Radius.circular(
-                            10.0,
+                            10.0.r,
                           ),
                         ),
                       ),
@@ -64,13 +65,13 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               Container(
-                height: 240.0,
+                height: 240.0.h,
                 margin: const EdgeInsets.all(
                   16.0,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
-                    16.0,
+                    16.0.r,
                   ),
                   image: const DecorationImage(
                     image: AssetImage(
@@ -91,8 +92,8 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.0.w,
                   ),
                   child: Align(
                     alignment: Alignment.bottomLeft,
@@ -100,7 +101,7 @@ class HomeView extends StatelessWidget {
                       '30% Off',
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.bold,
-                        fontSize: 26.0,
+                        fontSize: 26.0.sp,
                         color: const Color(
                           0xFFFFFFFF,
                         ).withOpacity(
@@ -112,8 +113,8 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 16.0,
+                margin: EdgeInsets.symmetric(
+                  horizontal: 16.0.w,
                 ),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -190,13 +191,13 @@ class HomeView extends StatelessWidget {
                         );
                       },
                       child: Container(
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 16.0,
-                          horizontal: 20.0,
+                        margin: EdgeInsets.symmetric(
+                          vertical: 16.0.h,
+                          horizontal: 20.0.w,
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                            16.0,
+                            16.0.r,
                           ),
                           color: Colors.blueGrey[800],
                         ),
@@ -205,21 +206,24 @@ class HomeView extends StatelessWidget {
                           children: [
                             Expanded(
                               child: ClipRRect(
-                                borderRadius: const BorderRadius.vertical(
+                                borderRadius: BorderRadius.vertical(
                                   top: Radius.circular(
-                                    16.0,
+                                    16.0.r,
                                   ),
                                 ),
                                 child: Center(
                                   child: Image.asset(
                                     demoDataProduct[index]['image'],
                                     fit: BoxFit.cover,
+                                    
                                   ),
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(
+                                8.0,
+                              ),
                               child: Text(
                                 demoDataProduct[index]['category'],
                                 style: TextStyle(
@@ -228,18 +232,21 @@ class HomeView extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8.0.w,
+                              ),
                               child: Text(
                                 demoDataProduct[index]['name'],
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 16.0,
+                                  fontSize: 16.0.sp,
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(
+                                8.0,
+                              ),
                               child: Text(
                                 '\$' + demoDataProduct[index]['price'],
                               ),
@@ -317,11 +324,11 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      width: 50,
+      height: 50.0.h,
+      width: 50.0.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
-          10.0,
+          10.0.r,
         ),
         gradient: LinearGradient(
           colors: gradientColors,
@@ -334,7 +341,7 @@ class Category extends StatelessWidget {
             ? Text(
                 text!,
                 style: GoogleFonts.poppins(
-                  fontSize: 13,
+                  fontSize: 13.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
                 ),
