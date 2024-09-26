@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeView extends StatelessWidget {
@@ -176,27 +177,78 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  padding: const EdgeInsets.all(
-                    16.0,
-                  ),
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  children: [
-                    _productCard(
-                      'Road Bike',
-                      'PEUGEOT - LR01',
-                      '1,999.99',
-                      'assets/image/bigpro.png',
-                    ),
-                    _productCard(
-                      'Road Helmet',
-                      'SMITH - Trade',
-                      '120',
-                      'assets/image/helmet.png',
-                    ),
-                  ],
+                child: PageView.builder(
+                  itemCount: demoDataProduct.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        context.push(
+                          '/detail',
+                          extra: {
+                            'category': demoDataProduct[index],
+                          },
+                        );
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 16.0,
+                          horizontal: 20.0,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            16.0,
+                          ),
+                          color: Colors.blueGrey[800],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.vertical(
+                                  top: Radius.circular(
+                                    16.0,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Image.asset(
+                                    demoDataProduct[index]['image'],
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                demoDataProduct[index]['category'],
+                                style: TextStyle(
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                demoDataProduct[index]['name'],
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                '\$' + demoDataProduct[index]['price'],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
@@ -232,64 +284,24 @@ class HomeView extends StatelessWidget {
   }
 }
 
-Widget _productCard(
-  String category,
-  String name,
-  String price,
-  String image,
-) {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(
-        16.0,
-      ),
-      color: Colors.blueGrey[800],
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: ClipRRect(
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(
-                16.0,
-              ),
-            ),
-            child: Center(
-              child: Image.asset(
-                image,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            category,
-            style: TextStyle(
-              color: Colors.grey[400],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text(
-            name,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.0,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text('\$$price'),
-        ),
-      ],
-    ),
-  );
-}
+List<Map<String, dynamic>> demoDataProduct = [
+  {
+    'category': 'Road Bike',
+    'name': 'PEUGEOT - LR01',
+    'price': '1,999.99',
+    'image': 'assets/image/bigpro.png',
+    'description':
+        "The LR01 uses the same design as the most iconic bikes from PEUGEOT Cycles' 130-year history and combines it with agile, dynamic performance that's perfectly suited to navigating today's cities. As well as a lugged steel frame and iconic PEUGEOT black-and-white chequer design, this city bike also features a 16-speed Shimano Claris drivetrain.",
+  },
+  {
+    'category': 'Road Helmet',
+    'name': 'SMITH - Trade',
+    'price': '120',
+    'image': 'assets/image/helmet.png',
+    'description':
+        "The LR01 uses the same design as the most iconic bikes from PEUGEOT Cycles' 130-year history and combines it with agile, dynamic performance that's perfectly suited to navigating today's cities. As well as a lugged steel frame and iconic PEUGEOT black-and-white chequer design, this city bike also features a 16-speed Shimano Claris drivetrain.",
+  }
+];
 
 class Category extends StatelessWidget {
   final String? text;
